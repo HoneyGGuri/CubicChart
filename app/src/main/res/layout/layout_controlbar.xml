@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <SeekBar
+        android:id="@+id/seekbar_controlbar"
+        android:layout_width="@dimen/seekbar_height"
+        android:layout_height="@dimen/seekbar_height"
+        android:layout_gravity="center_horizontal"
+        android:max="100"
+        android:min="0"
+        android:progress="50"
+        android:thumb="@drawable/seekbar_thumb"
+        android:rotation="-90"/>
+
+    <TextView
+        android:id="@+id/xlabel_controlbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:gravity="center"/>
+
+</LinearLayout>
