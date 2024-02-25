@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.example.kotlinview.R
 import com.example.kotlinview.util.UIUtil
 import com.example.kotlinview.databinding.ActivityMainBinding
+import com.example.kotlinview.ui.CurveChart
 import com.example.kotlinview.ui.GridLine
 import com.example.kotlinview.ui.GridText
 
@@ -20,11 +21,15 @@ class MainActivity : AppCompatActivity() {
     // Variables
     private val tag = "MainActivity"
 
+    val maxLineCount = UIUtil().controlBarCount
+
     private lateinit var activityMainBinding: ActivityMainBinding
 
     private lateinit var seekBars: Array<SeekBar?> // Seekbar
     private lateinit var seekBarValues: Array<Int?> // SeekBar의 progress값을 저장
     private lateinit var controlBars: Array<View?> // Seekbar + Textview(layout_controlbar)
+
+    private lateinit var curveChart: CurveChart
 
     private val controlBarId = arrayOf(
         R.id.layout_controlbar1,
@@ -54,11 +59,15 @@ class MainActivity : AppCompatActivity() {
     private fun initPanelLayout() {
         val layoutChart = activityMainBinding.layoutChart
 
-        controlBars = arrayOfNulls(UIUtil().controlBarCount)
-        seekBars = arrayOfNulls(UIUtil().controlBarCount)
-        seekBarValues = arrayOfNulls(UIUtil().controlBarCount)
+        curveChart = layoutChart.findViewById(R.id.view_curve_chart)
+        curveChart.initList(maxLineCount)
+        curveChart.bringToFront()
 
-        for (i in 0 until UIUtil().controlBarCount) {
+        controlBars = arrayOfNulls(maxLineCount)
+        seekBars = arrayOfNulls(maxLineCount)
+        seekBarValues = arrayOfNulls(maxLineCount)
+
+        for (i in 0 until maxLineCount) {
             controlBars[i] = layoutChart.findViewById(controlBarId[i])
             controlBars[i]?.findViewById<TextView>(R.id.xlabel_controlbar)?.text = when(i) {
                 0 -> "${i + 1}st"
@@ -103,9 +112,9 @@ class MainActivity : AppCompatActivity() {
     inner class SeekbarChangeListener: OnSeekBarChangeListener {
         override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
             val xValue = seekBar?.tag as Int
-            Log.d(tag, "$seekBar.id")
             val yValue = seekBar.progress.toFloat()
             Log.d(tag, "onProgressChanged() : (x, y) = ($xValue, $yValue)")
+            curveChart.setData(xValue, yValue)
         }
 
         override fun onStartTrackingTouch(seekBar: SeekBar?) {

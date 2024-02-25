@@ -13,6 +13,11 @@
         android:layout_width="@dimen/panel_width"
         android:layout_height="wrap_content">
 
+        <com.example.kotlinview.ui.CurveChart
+            android:id="@+id/view_curve_chart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
         <RelativeLayout
             android:id="@+id/layout_grid_line"
             android:layout_width="match_parent"
