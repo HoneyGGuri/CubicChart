@@ -27,7 +27,6 @@ class GridText: View {
         canvas.save()
         gridTextPaint.textSize = 35f
         gridTextPaint.textAlign = Paint.Align.RIGHT
-        var ascent = gridTextPaint.ascent() / 2
 
         val maxLineCount = UIUtil().controlBarCount
         for(i in 0..maxLineCount) {
