@@ -2,7 +2,11 @@
 <resources>
     <dimen name="seekbar_height">200dp</dimen>
     <dimen name="seekbar_bar_height">170dp</dimen>
-    <dimen name="seekbar_width">30dp</dimen>
     <dimen name="panel_width">300dp</dimen>
+    <dimen name="grid_padding_top">15dp</dimen>
+
+    <dimen name="grid_text_padding_top">5dp</dimen>
+    <dimen name="grid_text_padding_width">5dp</dimen>
+    <dimen name="grid_text_width">20dp</dimen>
 </resources>
 

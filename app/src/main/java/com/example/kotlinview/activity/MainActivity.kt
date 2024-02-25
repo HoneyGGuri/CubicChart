@@ -14,6 +14,7 @@ import com.example.kotlinview.R
 import com.example.kotlinview.util.UIUtil
 import com.example.kotlinview.databinding.ActivityMainBinding
 import com.example.kotlinview.ui.GridLine
+import com.example.kotlinview.ui.GridText
 
 class MainActivity : AppCompatActivity() {
     // Variables
@@ -71,6 +72,10 @@ class MainActivity : AppCompatActivity() {
         val layoutGridLine = layoutChart.findViewById<RelativeLayout>(R.id.layout_grid_line)
         val gridLine = GridLine(this)
         layoutGridLine.addView(gridLine)
+
+        val layoutGridText = layoutChart.findViewById<RelativeLayout>(R.id.layout_grid_text)
+        val gridText = GridText(this)
+        layoutGridText.addView(gridText)
     }
 
     @SuppressLint("ClickableViewAccessibility") // setOnTouchListener warning 제거
